@@ -137,20 +137,24 @@ services:
       - APPLICATION_NAME=unstract-celery-beat
 
   # Frontend React app
-  frontend:
-    image: unstract/frontend:${VERSION}
-    container_name: unstract-frontend
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-      - reverse-proxy
-    environment:
-      - ENVIRONMENT=development
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.frontend.rule=Host(`frontend.unstract.localhost`)  && !PathPrefix(`/api/v1`, `/deployment`)
+ # Find the frontend service section
+frontend:
+  build:
+    context: ..
+    dockerfile: docker/dockerfiles/frontend.Dockerfile
+  image: unstract/frontend:${VERSION}-branded  # Optional: add -branded suffix
+  container_name: unstract-frontend
+  restart: unless-stopped
+  ports:
+    - "3000:3000"
+  depends_on:
+    - backend
+    - reverse-proxy
+  environment:
+    - ENVIRONMENT=development
+  labels:
+    - traefik.enable=true
+    - traefik.http.routers.frontend.rule=Host(`frontend.unstract.localhost`) && !PathPrefix(`/api/v1`, `/deployment`)
 
   platform-service:
     image: unstract/platform-service:${VERSION}
