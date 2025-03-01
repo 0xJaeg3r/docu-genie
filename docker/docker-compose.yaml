@@ -141,7 +141,7 @@ services:
     build:
       context: ..
       dockerfile: docker/dockerfiles/frontend.Dockerfile
-    image: unstract/frontend:${VERSION}-branded
+    image: unstract/frontend:${VERSION:-latest}-branded
     container_name: unstract-frontend
     restart: unless-stopped
     ports:
