@@ -4,9 +4,9 @@ import loginRightBanner from "../../assets/login-right-panel.svg";
 import { Typography } from "antd";
 
 const defaultUnstractContent = {
-  title: "UNLOCK VALUE FROM UNSTRUCTURED DATA.",
+  title: "UNLOCK VALUE FROM UNSTRUCTURED DATA, LIKE MAGIC.",
   description:
-    "Unstract is a no-code LLM platform that lets you automate even the most complex workflows involving unstructured data, saving you time, money, and automation headaches.",
+    "Docu Genie is a no-code LLM platform that lets you automate even the most complex workflows involving unstructured data, saving you time, money, and automation headaches.",
 };
 
 function ProductContentLayout({ title, description, image }) {
